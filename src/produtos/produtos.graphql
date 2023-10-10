@@ -1,0 +1,18 @@
+type Query {
+  produtoFindAll: [Produto]
+  produtoFindById(id: ID!): Produto
+}
+
+type Mutation {
+  saveProduto(saveProdutoInput: SaveProdutoInput!): Produto
+}
+
+type Produto {
+  id: Int
+  descricao: String
+}
+
+input SaveProdutoInput {
+  id: Int
+  descricao: String
+}
