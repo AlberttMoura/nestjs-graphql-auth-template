@@ -8,7 +8,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export interface SaveProdutoInput {
+export interface ProdutoSaveInput {
     id?: Nullable<number>;
     descricao?: Nullable<string>;
 }
@@ -19,7 +19,7 @@ export interface IQuery {
 }
 
 export interface IMutation {
-    saveProduto(saveProdutoInput: SaveProdutoInput): Nullable<Produto> | Promise<Nullable<Produto>>;
+    produtoSave(produtoSaveInput: ProdutoSaveInput): Nullable<Produto> | Promise<Nullable<Produto>>;
 }
 
 export interface Produto {
