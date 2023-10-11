@@ -7,6 +7,8 @@ import { ProdutoModule } from './produto/produto.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsuarioModule } from './usuario/usuario.module';
 import { AuthModule } from './auth/auth.module';
+import { Produto } from './produto/produto.entity';
+import { Usuario } from './usuario/usuario.entity';
 
 @Module({
   imports: [
@@ -26,7 +28,7 @@ import { AuthModule } from './auth/auth.module';
       username: 'postgres',
       password: 'postgres',
       database: 'nesttest',
-      entities: [],
+      entities: [Produto, Usuario],
       synchronize: true,
       autoLoadEntities: true,
     }),
