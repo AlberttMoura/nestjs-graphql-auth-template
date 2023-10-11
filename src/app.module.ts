@@ -5,9 +5,20 @@ import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { join } from 'path';
 import { ProdutoModule } from './produto/produto.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsuarioModule } from './usuario/usuario.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      playground: true,
+      typePaths: ['./**/*.graphql'],
+      definitions: {
+        path: join(cwd(), 'src/graphql.ts'),
+        outputAs: 'interface',
+      },
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: '127.0.0.1',
@@ -19,16 +30,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: true,
       autoLoadEntities: true,
     }),
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      playground: true,
-      typePaths: ['./**/*.graphql'],
-      definitions: {
-        path: join(cwd(), 'src/graphql.ts'),
-        outputAs: 'interface',
-      },
-    }),
+    UsuarioModule,
     ProdutoModule,
+    AuthModule,
   ],
 })
 export class AppModule {}

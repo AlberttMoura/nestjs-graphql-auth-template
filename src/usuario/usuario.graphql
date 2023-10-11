@@ -1,0 +1,18 @@
+type Query {
+  usuarioFindAll: [UsuarioOutput]
+  usuarioFindById(id: ID!): UsuarioOutput
+}
+
+type Mutation {
+  usuarioSave(usuarioSaveInput: UsuarioSaveInput!): UsuarioOutput
+}
+
+type UsuarioOutput {
+  email: String!
+}
+
+input UsuarioSaveInput {
+  id: Int!
+  email: String!
+  senha: String!
+}
